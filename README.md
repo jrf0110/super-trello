@@ -1,6 +1,6 @@
 # Super Trello Chrome Extension
 
-> Extra features on top of (Trello)[https://trello.com]
+> Extra features on top of https://trello.com
 
 I wanted a nice base for when I wanted new features for trello.
 
