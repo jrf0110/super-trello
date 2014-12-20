@@ -12,6 +12,8 @@
     "browserify": "^7.0.3",
     "gulp": "^3.8.10",
     "gulp-jshint": "^1.9.0",
+    "gulp-run": "^1.6.4",
+    "gulp-zip": "^2.0.2",
     "jquery": "^2.1.3",
     "loglog": "^0.2.2",
     "mousetrap": "^1.4.6",

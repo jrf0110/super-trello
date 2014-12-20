@@ -31,9 +31,20 @@ gulp.task( 'lint', function(){
     .pipe( require('gulp-jshint').reporter('default') );
 });
 
+// gulp.task( 'zip', function(){
+//   return gulp.src(['./dist', './manifest.json'])
+//     .pipe( require('gulp-zip')('super-trello.zip') )
+//     .pipe( gulp.dest('./dist') );
+// });
+
+gulp.task( 'zip', function(){
+  require('gulp-run')('zip -r ./dist/super-trello.zip dist/ manifest.json').exec();
+});
+
 gulp.task( 'watch', function(){
   gulp.watch( config.lint, ['lint'] );
   gulp.watch( config.scripts, ['scripts'] );
 });
 
 gulp.task( 'default', [ 'lint', 'scripts', 'watch'] );
+gulp.task( 'build', [ 'lint', 'scripts', 'zip'] );
