@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+
+  "name": "Super Trello",
+  "description": "Adds new features to trello",
+  "version": "1.0",
+
+  "content_scripts": [
+    { "matches": ["https://trello.com/b/*/*", "https://trello.com/c/*/*"]
+    , "js": ["dist/super-trello.js"]
+    }
+  ]
+}
