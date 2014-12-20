@@ -2,7 +2,9 @@
 
 > Extra features on top of https://trello.com
 
-I wanted a nice base for when I wanted new features for trello.
+I wanted a nice base for when I wanted new features for trello. Download it here:
+
+https://chrome.google.com/webstore/detail/super-trello/jhmefmkepidkekablipkaemmkinkbain/related
 
 ## Features
 
