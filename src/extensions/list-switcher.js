@@ -1,26 +1,27 @@
 /**
- * Card Switcher
+ * List Switcher
  * Description:
- *   Use the arrow keys (up/down) to go through cards in a list
+ *   Use the arrow keys (left/right) to switch lists while
+ *   a card is open (goes to the first card in the list)
  */
 
 var utils   = require('../lib/utils');
 var trello  = require('../lib/trello');
 
-module.exports.keys = ['up', 'down'];
+module.exports.keys = ['left', 'right'];
 
-var up = ['up'];
-var down = ['down'];
+var left = ['left'];
+var right = ['right'];
 
 module.exports.onKey = function( key ){
   if ( !trello.cardIsOpen() ) return;
 
-  if ( up.indexOf( key ) > -1 ){
+  if ( left.indexOf( key ) > -1 ){
     window.scrollTo( 0, 0 );
-    trello.prevCard();
+    trello.prevList();
   } else {
     window.scrollTo( 0, 0 );
-    trello.nextCard();
+    trello.nextList();
   }
 };
 

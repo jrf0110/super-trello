@@ -26,6 +26,24 @@ module.exports = Object.create({
     });
   }
 
+, nextList: function(){
+    if ( !this.cardIsOpen() ) return this;
+    
+    var $next = this.openCard.list.$el.next();
+    $next.find('.list-cards > :first-child').click();
+
+    return this;
+  }
+
+, prevList: function(){
+    if ( !this.cardIsOpen() ) return this;
+    
+    var $prev = this.openCard.list.$el.prev();
+    $prev.find('.list-cards > :first-child').click();
+
+    return this;
+  }
+
 , prevCard: function(){
     if ( !this.cardIsOpen() ) return this;
     console.log('prevcard');
@@ -52,7 +70,8 @@ module.exports = Object.create({
 
 , getListModelFromDomNode: function( $list ){
     return {
-      name:     $list.find('.js-list-name').text()
+      $el:      $list
+    , name:     $list.find('.js-list-name').text()
     , length:  +$list.find('.js-num-cards').text().replace( ' cards', '' )
     };
   }
@@ -62,13 +81,13 @@ module.exports = Object.create({
     var $cardInList = this.getCardInListEl( urlStuff.cardId );
 
     return {
-      $el: $card
-    , $inList: $cardInList
-    , index: $cardInList.prevAll().length
-    , name: $card.find('.js-card-title').text()
-    , id: urlStuff.cardId
-    , url: urlStuff.cardUrl
-    , list: this.getListModelFromDomNode( $cardInList.parents('.list').eq(0) )
+      $el:        $card
+    , $inList:    $cardInList
+    , index:      $cardInList.prevAll().length
+    , name:       $card.find('.js-card-title').text()
+    , id:         urlStuff.cardId
+    , url:        urlStuff.cardUrl
+    , list:       this.getListModelFromDomNode( $cardInList.parents('.list').eq(0) )
     };
   }
 
