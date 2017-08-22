@@ -4,5 +4,7 @@
 
 console.log('Hello, from Super Trello!');
 
-require('./extensions/card-switcher');
-require('./extensions/list-switcher');
+var trello = require('./lib/trello')();
+
+require('./extensions/card-switcher')(trello);
+require('./extensions/list-switcher')(trello);
