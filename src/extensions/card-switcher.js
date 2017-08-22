@@ -4,26 +4,30 @@
  *   Use the arrow keys (up/down) to go through cards in a list
  */
 
-var utils   = require('../lib/utils');
-var trello  = require('../lib/trello');
+var utils = require('../lib/utils');
 
-module.exports.keys = ['up', 'down'];
+module.exports = function(trello, options) {
+  options = Object.assign({}, options, {
+    up: ['shift+up'],
+    down: ['shift+down'],
+    keys: ['shift+up', 'shift+down'],
+  });
 
-var up = ['up'];
-var down = ['down'];
+  var keybinder = new utils.Keybinder(trello.$body[0]);
 
-module.exports.onKey = function( key ){
-  if ( !trello.cardIsOpen() ) return;
+  function onKey( key ){
+    if ( !trello.cardIsOpen() ) return;
 
-  if ( up.indexOf( key ) > -1 ){
-    window.scrollTo( 0, 0 );
-    trello.prevCard();
-  } else {
-    window.scrollTo( 0, 0 );
-    trello.nextCard();
+    if ( options.up.indexOf( key ) > -1 ){
+      window.scrollTo( 0, 0 );
+      trello.prevCard();
+    } else {
+      window.scrollTo( 0, 0 );
+      trello.nextCard();
+    }
   }
-};
 
-module.exports.keys.forEach( function( key ){
-  utils.key( key, module.exports.onKey.bind( null, key ) );
-});
+  options.keys.forEach( function( key ){
+    keybinder.bind( key, onKey.bind( null, key ) );
+  });
+};
